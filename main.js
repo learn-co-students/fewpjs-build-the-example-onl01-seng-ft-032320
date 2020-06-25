@@ -3,7 +3,19 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+document.querySelector('#modal').setAttribute('class', 'hidden');
+const heartButtons = document.querySelectorAll('.like-glyph');
 
+for(heartBtn of heartButtons) {
+  heartBtn.addEventListener('click', function(e) {
+    likePost();
+  });
+}
+
+function likePost() {
+  const failureState = mimicServerCall();
+  console.log(failureState);
+}
 
 
 
