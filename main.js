@@ -4,7 +4,30 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
-
+const error = document.querySelector("#modal")
+error.classList.add("hidden")
+const posts = document.querySelectorAll(".like")
+posts.forEach(like => {
+  like.addEventListener("click", () => {
+    mimicServerCall()
+      .then(() => {
+        const newError = document.querySelector("#modal")
+        newError.classList.add("hidden")
+        if (like.classList.contains("activated-heart")) {
+          like.classList.remove("activated-heart")
+          like.innerHTML = `Like! <span class='like-glyph'>${EMPTY_HEART}</span>`
+        } else {
+          like.classList.add("activated-heart")
+          like.innerHTML = `Like! <span class='like-glyph'>${FULL_HEART}</span>`
+        }
+      })
+      .catch((error) => {
+        const newError = document.querySelector("#modal")
+        newError.classList.remove("hidden")
+        newError.innerText = error
+      })
+  })
+})
 
 
 //------------------------------------------------------------------------------
