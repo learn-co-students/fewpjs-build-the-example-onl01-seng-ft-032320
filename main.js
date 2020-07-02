@@ -9,7 +9,7 @@ hiddenError.className = 'hidden'
 const hearts = document.querySelectorAll('.like-glyph')
 for (let heart of hearts) {
   heart.addEventListener('click', (e) => {
-    mimicServerCall('url')
+    mimicServerCall()
     .then(() => {
       if (e.target.innerHTML == EMPTY_HEART) {
         e.target.innerHTML = FULL_HEART
@@ -20,8 +20,8 @@ for (let heart of hearts) {
         e.target.classList.remove('activated-heart')
       }
     })
-    .catch((err) => {
-      console.error(err)
+    .catch((error) => {
+      console.error(error)
       setTimeout(() => hidden.className = '', 5000)
       hidden.className = 'hidden'
     })
