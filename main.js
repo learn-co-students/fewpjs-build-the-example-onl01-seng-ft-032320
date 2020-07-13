@@ -14,8 +14,13 @@ function clicked(event) {
   console.log("clicked");
   mimicServerCall()
     .then((object) => {
-      event.target.innerText = FULL_HEART;
-      event.target.classList.add("activated-heart");
+      if (event.target.innerText === EMPTY_HEART) {
+        event.target.innerText = FULL_HEART;
+        event.target.classList.add("activated-heart");
+      } else {
+        event.target.innerText = EMPTY_HEART;
+        event.target.classList.remove("activated-heart");
+      }
     })
     .catch((response) => {
       modal.classList.remove("hidden");
